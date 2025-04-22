@@ -1,0 +1,44 @@
+<div class="container">
+    <h1 >Crear préstamo</h1>
+    
+    <form #form="ngForm" >
+        <mat-form-field>
+            <mat-label>Identificador</mat-label>
+            <input type="text" matInput placeholder="Identificador" [(ngModel)]="borrow.id" name="id" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre cliente</mat-label>
+            <mat-select disableRipple [(ngModel)]="borrow.customer" name="customer" required>
+                <mat-option *ngFor="let customer of customers" [value]="customer">{{customer.name}}</mat-option>
+            </mat-select>
+            <mat-error>El nombre no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre del juego</mat-label>
+            <mat-select disableRipple [(ngModel)]="borrow.game" name="game" required>
+                <mat-option *ngFor="let game of games" [value]="game">{{game.title}}</mat-option>
+            </mat-select>
+            <mat-error>El juego no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fecha de inicio del préstamo</mat-label>
+            <input type="date" matInput placeholder="Fecha de inicio" [(ngModel)]="borrow.startDate" name="startDate" required >
+            <mat-error>La fecha de inicio no puede estar vacía</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fecha de final del préstamo</mat-label>
+            <input type="date" matInput placeholder="Fecha de final" [(ngModel)]="borrow.finishDate" name="finishDate" required >
+            <mat-error>La fecha de final no puede estar vacía</mat-error>
+        </mat-form-field>
+        
+    </form>
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="onClose()">Cerrar</button>
+        <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
+    </div>
+</div>
